@@ -1,33 +1,35 @@
 <?php
-  var_dump($_POST);
-  include('koneksi.php');
-  $berhasil = false;
-  
-  if(isset($_POST['tambah'])){
+var_dump($_POST);
+include('koneksi.php');
+$berhasil = false;
+
+if (isset($_POST['tambah'])) {
     $nama = $_POST['Nama'];
     $kelas = $_POST['Kelas'];
 
     $query = mysqli_query($koneksi, "INSERT INTO kelas (Nama, Kelas) VALUE('$nama', '$kelas')");
 
-    if($query){
+    if ($query) {
         $berhasil = true;
     } else {
         echo "Data gagal ditambahkan";
     }
-  }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menambahkan Data Nama & Kelas</title>
 </head>
+
 <body>
     <h2>Tambah Nama & Kelas:</h2>
 
-    <?php if($berhasil): ?>
+    <?php if ($berhasil): ?>
         <p>Data berhasil ditambahkan</p>
         <a href="index.php"><button type="button">Kembali ke Index</button></a>
     <?php else: ?>
@@ -43,4 +45,5 @@
         </form>
     <?php endif; ?>
 </body>
+
 </html>
